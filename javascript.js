@@ -1,17 +1,32 @@
 
-
-function Mammal(age) {
-  this.hair = true;
-  this.blood = "warm";
-  this.age = age;
+class Mammal {
+  constructor(age) {
+    this.hair = true;
+    this.age = age;
+  }
 }
 
-function Person(name, nationality, age) {
-  Mammal.call(this, age)
-  this.name = name;
-  this.nationality = nationality;
+
+class Person extends Mammal {
+  constructor(name, nationality, age) {
+    super(age);
+    this.name = name;
+    this.nationality = nationality;
+  }
 }
-Person.prototype = new Mammal();
+
+// function Mammal(age) {
+//   this.hair = true;
+//   this.blood = "warm";
+//   this.age = age;
+// }
+
+// function Person(name, nationality, age) {
+//   Mammal.call(this, age)
+//   this.name = name;
+//   this.nationality = nationality;
+// }
+// Person.prototype = new Mammal();
 
 Person.prototype.secondNationality = function(purpleHippo) {
   this.secondNationality = purpleHippo;
@@ -20,7 +35,7 @@ Person.prototype.secondNationality = function(purpleHippo) {
 
 var john = new Person("John Miller", "German", 23);
 john.secondNationality("French");
-console.log(john.age);
+console.log(john);
 
 
 
@@ -67,10 +82,14 @@ console.log(john.age);
 //   }
 // })();
 
-
-// function Account(firstName, lastName, openingBalance) {
+// function Person(firstName, lastName) {
 //   this.firstName = firstName;
 //   this.lastName = lastName;
+// }
+
+
+// function Account(firstName, lastName, openingBalance) {
+//   Person.call(this, firstName, lastName)
 //   this.balance = openingBalance;
 //   this.status = "active";
 // }
