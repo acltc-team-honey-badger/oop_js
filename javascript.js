@@ -1,17 +1,26 @@
 
-function Person(name, nationality, age) {
-  this.name = name;
-  this.nationality = nationality;
+
+function Mammal(age) {
+  this.hair = true;
+  this.blood = "warm";
   this.age = age;
 }
+
+function Person(name, nationality, age) {
+  Mammal.call(this, age)
+  this.name = name;
+  this.nationality = nationality;
+}
+Person.prototype = new Mammal();
 
 Person.prototype.secondNationality = function(purpleHippo) {
   this.secondNationality = purpleHippo;
 };
 
+
 var john = new Person("John Miller", "German", 23);
 john.secondNationality("French");
-console.log(john);
+console.log(john.age);
 
 
 
@@ -58,6 +67,20 @@ console.log(john);
 //   }
 // })();
 
+
+// function Account(firstName, lastName, openingBalance) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
+//   this.balance = openingBalance;
+//   this.status = "active";
+// }
+
+
+// Account.prototype.closeAccount = function() {
+//   this.status = "closed";
+//   this.balance = 0;
+//   console.log("Account closed; difference in the mail");
+// }
 
 
 
